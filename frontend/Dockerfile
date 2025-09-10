@@ -5,12 +5,15 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine AS runtime
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /app/dist /usr/share/nginx/html
+# Используем простой Node.js для serving статики
+FROM node:lts-alpine AS runtime
+WORKDIR /app
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package*.json ./
 
-# Убираем копирование SSL-сертификатов, так как они монтируются через volumes
-# COPY ./nginx/ssl/certificate.crt /etc/nginx/ssl/
-# COPY ./nginx/ssl/private.key /etc/nginx/ssl/
+# Устанавливаем serve для обслуживания статических файлов
+RUN npm install -g serve
 
-EXPOSE 443
+EXPOSE 3001
+
+CMD ["serve", "-s", "dist", "-l", "3000"]

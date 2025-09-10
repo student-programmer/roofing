@@ -1,0 +1,95 @@
+---
+import { MainForm } from '../components/Form/Form';
+import Second from '../components/Second.astro';
+import Advantages from '../components/Advantages.astro';
+import Layout from '../layouts/Layout.astro';
+import AdvantagesSlider from '../components/AdvantagesSlider.astro';
+---
+
+<Layout title="Кровельные работы в Симферополе и Крыму: монтаж и ремонт крыш с гарантией качества" description="Нужна надежная кровля в Симферополе или Крыму? Профессионально выполняем монтаж и ремонт крыш любой сложности. Гарантия качества, доступные цены, выезд специалиста. Обращайтесь – обеспечим защиту вашего дома от непогоды!">
+	<main>
+		<div class="first_block" id="first">
+			
+			<div class="info">
+			<h1 class="name">Кровельные работы в Крыму  надёжная защита вашего дома</h1>
+    <p>Добро пожаловать в мир прочности и комфорта! Мы специализируемся на кровельных работах в Крыму. Ваша крыша это главная защита от солнца, дождя и ветра.</p>
+    <p>Наша команда опытных мастеров предлагает качественные решения для вашего дома. Мы работаем с разными материалами и гарантируем долговечность результата.</p>
+    <p>Не откладывайте заботу о вашей крыше! Оставьте заявку, и мы рассчитаем стоимость работ. Доверьтесь профессионалам своего дела.</p>
+			<a href="#application" class="application">Оставить заявку</a>
+			</div>
+		</div>
+		<MainForm client:only="react"/>
+		<Second/>
+		<Advantages/>
+		<AdvantagesSlider/>
+		<!-- <Form client:load /> -->
+	</main>
+</Layout>
+
+<style>
+
+.first_block{
+	width:100%;
+	height:1000px;
+	position:relative;
+	background-image: url('/12.jpg');
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+.name{
+	text-shadow:0 0 3px #1f222f, 0 0 5px #1f222f;
+	color:white;
+	font-size:40px;
+	text-align: center;
+}
+.application{
+	width:150px;
+	height:40px;
+	/* background-color: #f52137; */
+	background-color: 	#4CAF50;
+	border-radius: 5px;
+	color:white;
+	position:absolute;
+	bottom:-10px;
+	left:50%;
+	transform: translateX(-50%);
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.info{
+	width:500px;
+	height:500px;
+	position:relative;
+	left:300px;
+	top:200px;
+}
+p{
+	color:white;
+	margin-top:20px;
+	font-size:18px;
+	text-shadow:0 0 3px #1f222f, 0 0 5px #1f222f;
+}
+.button_link{
+    color:white;
+    width:150px !important;
+	height:40px !important;
+}
+
+
+@media screen and (max-width: 990px) {
+    .info{
+		left:50%;
+		transform: translateX(-50%);
+		height:600px;
+	}
+  }
+@media screen and (max-width: 700px) {
+    	html,body {
+  height: 100%;
+  width:700px;
+}
+  }
+
+
+</style>

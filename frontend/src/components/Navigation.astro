@@ -1,0 +1,105 @@
+---
+
+// interface Props {
+// 	title: string;
+// 	body: string;
+// 	href: string;
+// }
+
+
+
+// const { href, title, body } = Astro.props;
+
+---
+
+<header>
+<div class="logo">КРОВСТРОЙ</div>
+<ul class="links">
+    <li class="link_block"><a href="#first" class="link">Главная</a></li>
+    <li class="link_block"><a href="#application" class="link">Услуги</a></li>
+    <li class="link_block"><a href="#footer" class="link">Контакты</a></li>
+</ul>
+    <p class="phone">+7(978)-024-13-45</p>
+	<a href="#application" class="application">Оставить заявку</a>
+</header>
+<style>
+header{
+    width:100%;
+    height:100px;
+    position:fixed;
+    background-color: #1f222f;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index:10;
+}
+.links{
+    width:400px;
+    display:flex;
+    justify-content: space-around;
+}
+.link{
+   color:white;
+   font-size:25px;
+}
+.logo{
+font-size:40px;
+color:white;
+}
+.application{
+	width:150px;
+	height:40px;
+	/* background-color: #f52137; */
+    background-color: 	#4CAF50;
+	border-radius: 5px;
+	color:white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.phone{
+     color:white;
+   font-size:25px;
+}
+.button_link{
+    color:white;
+    	width:150px !important;
+	height:40px !important;
+}
+@media screen and (max-width: 990px) {
+.phone{
+    font-size:17px;
+}
+.logo{
+    display:none;
+}
+.link{
+    font-size:17px;
+}
+  }
+  @media screen and (max-width: 710px) {
+header{
+    justify-content: center;
+}
+.application{
+    display:none;
+}
+.links{
+    width:250px;
+}
+  }
+</style>
+<script>
+  const anchors = document.querySelectorAll('a[href*="#"]');
+
+		for (let anchor of anchors) {
+			anchor.addEventListener('click', function (event) {
+				event.preventDefault();
+				const blockID = anchor.getAttribute('href');
+				document.querySelector('' + blockID).scrollIntoView({
+					behavior: 'smooth',
+					block: 'start',
+				});
+			});
+		}
+</script>

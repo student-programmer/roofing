@@ -14,6 +14,6 @@ COPY --from=build /app/package*.json ./
 # Устанавливаем serve для обслуживания статических файлов
 RUN npm install -g serve
 
-EXPOSE 3001
+EXPOSE 3000
 
 CMD ["serve", "-s", "dist", "-l", "3000"]

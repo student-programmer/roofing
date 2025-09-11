@@ -6,10 +6,11 @@ module.exports.sendMsg = (req, res) => {
     let reqBody = req.body;
     //каждый элемент обьекта запихиваем в массив
     let fields = [
-        '<b>Имя</b>: ' + reqBody.name,
-        // '<b>Email</b>: ' + reqBody.email,
-        '<b>Номер телефона</b>: ' + reqBody.phone
-    ];
+			'<b>Имя</b>: ' + reqBody.name,
+			// '<b>Email</b>: ' + reqBody.email,
+			'<b>Номер телефона</b>: ' + reqBody.phone,
+			'<b>Заявка по крышам</b>',
+		];
     let msg = '';
     //проходимся по массиву и склеиваем все в одну строку
     fields.forEach((field) => {

@@ -3,8 +3,6 @@ const PORT = 5000;
 const cors = require('cors');
 const index = require('./routes/index');
 const app = express();
-const https = require('https');
-const fs = require('fs');
 const session = require('express-session');
 const config = require('./config/config.json');
 
@@ -23,15 +21,6 @@ app.use(
 		},
 	})
 );
-
-// const options = {
-// 	key: fs.readFileSync('./config/ssl/private.key'),
-// 	cert: fs.readFileSync('./config/ssl/certificate.crt'),
-// };
-
-// https.createServer(options, app).listen(PORT, () => {
-// 	console.log(`Server is running on port ${PORT}`);
-// });
 
 app.listen(PORT, '0.0.0.0', () => {
 	console.log(`Server is running on port ${PORT}`);

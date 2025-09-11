@@ -29,7 +29,7 @@ export const MainForm = () => {
 	const Submit = data => {
 		const phone = data.phone;
 		const name = data.name;
-		fetch('https://кровэксперт.рф:5001/telegram', {
+		fetch('/api/telegram', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

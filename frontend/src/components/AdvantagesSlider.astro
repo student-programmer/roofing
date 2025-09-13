@@ -1,107 +1,113 @@
-<section class="video-grid">
-  <div class="video-item">
-    <video muted preload="metadata" playsinline class="hover-play-video">
-      <source src="/IMG_4660.MP4" type="video/mp4" />
-    </video>
+  <section class="video-grid">
+    <div class="video-item">  
+      <video muted preload="metadata" playsinline class="hover-play-video"
+        poster="/preview-IMG_4660.jpg">
+        <source src="/IMG_4660.MP4" type="video/mp4" />
+      </video>
 
-  </div>
-  <div class="video-item">
-    <video muted preload="metadata" playsinline class="hover-play-video">
-      <source src="/IMG_4661.MP4" type="video/mp4" />
-    </video>
-   
-  </div>
-  <div class="video-item">
-    <video muted preload="metadata" playsinline class="hover-play-video">
-      <source src="/IMG_4673.MP4" type="video/mp4" />
-    </video>
+    </div>
+    <div class="video-item">
+      <video muted preload="metadata" playsinline class="hover-play-video"
+      poster="/preview-IMG_4661.jpg">
+        <source src="/IMG_4661.MP4" type="video/mp4" />
+      </video>
+    
+    </div>
+    <div class="video-item">
+      <video muted preload="metadata" playsinline class="hover-play-video"
+        poster="/preview-IMG_4673.jpg">
+        <source src="/IMG_4673.MP4" type="video/mp4" />
+      </video>
 
-  </div>
-  <div class="video-item">
-    <video muted preload="metadata" playsinline class="hover-play-video">
-      <source src="/IMG_4674.MP4" type="video/mp4" />
-    </video>
+    </div>
+    <div class="video-item">
+      <video muted preload="metadata" playsinline class="hover-play-video"
+        poster="/IMG_4674_preview.jpg">
+        <source src="/IMG_4674.MP4" type="video/mp4" />
+      </video>
 
-  </div>
-  <div class="video-item">
-    <video muted preload="metadata" playsinline class="hover-play-video">
-      <source src="/IMG_4675.MP4" type="video/mp4" />
-    </video>
+    </div>
+    <div class="video-item">
+      <video muted preload="metadata" playsinline class="hover-play-video"
+        poster="IMG_4675_preview.jpg">
+        <source src="/IMG_4675.MP4" type="video/mp4" />
+      </video>
 
-  </div>
-  <div class="video-item">
-    <video muted preload="metadata" playsinline class="hover-play-video">
-      <source src="/IMG_4676.MP4" type="video/mp4" />
-    </video>
+    </div>
+    <div class="video-item">
+      <video muted preload="metadata" playsinline class="hover-play-video"
+        poster="IMG_4676_preview.jpg">
+        <source src="/IMG_4676.MP4" type="video/mp4" />
+      </video>
 
-  </div>
-</section>
+    </div>
+  </section>
 
-<style>
-  .video-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 видео в ряд */
-    gap: 50px;
-    padding: 50px;
-    justify-items: center;
-    background: #708090;
-  }
-
-  .video-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    width:100%;
-    /* max-width: 500px; */
-  }
-
-  .video-item video {
-    width: 100%;
-    max-height: 700px;
-    aspect-ratio: 9 / 16;
-    object-fit: cover;
-    display: block;
-    background: black;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-
-  .video-item video:hover {
-    transform: scale(1.02);
-  }
-
-  .video-item p {
-    margin-top: 10px;
-    font-size: 1rem;
-    text-align: center;
-  }
-
-  /* адаптив: планшеты */
-  @media (max-width: 900px) {
+  <style>
     .video-grid {
-      grid-template-columns: repeat(2, 1fr);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 видео в ряд */
+      gap: 50px;
+      padding: 50px;
+      justify-items: center;
+      background: #708090;
     }
-  }
 
-  /* адаптив: телефоны */
-  @media (max-width: 600px) {
-    .video-grid {
-      grid-template-columns: 1fr;
+    .video-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      width:100%;
+      /* max-width: 500px; */
     }
-  }
-</style>
 
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const videos = document.querySelectorAll(".hover-play-video");
-    videos.forEach(video => {
-      video.addEventListener("mouseenter", () => video.play().catch(() => {}));
-      video.addEventListener("mouseleave", () => {
-        video.pause();
-        video.currentTime = 0;
+    .video-item video {
+      width: 100%;
+      max-height: 700px;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      display: block;
+      background: black;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .video-item video:hover {
+      transform: scale(1.02);
+    }
+
+    .video-item p {
+      margin-top: 10px;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    /* адаптив: планшеты */
+    @media (max-width: 900px) {
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* адаптив: телефоны */
+    @media (max-width: 600px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const videos = document.querySelectorAll(".hover-play-video");
+      videos.forEach(video => {
+        video.addEventListener("mouseenter", () => video.play().catch(() => {}));
+        video.addEventListener("mouseleave", () => {
+          video.pause();
+          video.currentTime = 0;
+        });
       });
     });
-  });
-</script>
+  </script>

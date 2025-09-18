@@ -6,144 +6,168 @@ import Layout from '../layouts/Layout.astro';
 import AdvantagesSlider from '../components/AdvantagesSlider.astro';
 ---
 
-<Layout title="Кровельные работы в Симферополе и Крыму: монтаж и ремонт крыш с гарантией качества" description="Нужна надежная кровля в Симферополе или Крыму? Профессионально выполняем монтаж и ремонт крыш любой сложности. Гарантия качества, доступные цены, выезд специалиста. Обращайтесь – обеспечим защиту вашего дома от непогоды!">
+<Layout 
+  title="Кровельные работы в Симферополе и Крыму: монтаж и ремонт крыш с гарантией качества" 
+  description="Нужна надежная кровля в Симферополе или Крыму? Профессионально выполняем монтаж и ремонт крыш любой сложности. Гарантия качества, доступные цены, выезд специалиста. Обращайтесь – обеспечим защиту вашего дома от непогоды!"
+>
 	<main>
 		<div class="first_block" id="first">
-			
 			<div class="info">
-			<h1 class="name">Кровельные работы в Крыму  надёжная защита вашего дома</h1>
-    <p>Добро пожаловать в мир прочности и комфорта! Мы специализируемся на кровельных работах в Крыму. Ваша крыша это главная защита от солнца, дождя и ветра.</p>
-    <p>Наша команда опытных мастеров предлагает качественные решения для вашего дома. Мы работаем с разными материалами и гарантируем долговечность результата.</p>
-    <p>Не откладывайте заботу о вашей крыше! Оставьте заявку, и мы рассчитаем стоимость работ. Доверьтесь профессионалам своего дела.</p>
-			<a href="#application" class="application">Оставить заявку</a>
+				<h1 class="name">Кровельные работы в Крыму — надёжная защита вашего дома</h1>
+				<p>Добро пожаловать в мир прочности и комфорта! Мы специализируемся на кровельных работах в Крыму. Ваша крыша — это главная защита от солнца, дождя и ветра.</p>
+				<p>Наша команда опытных мастеров предлагает качественные решения для вашего дома. Мы работаем с разными материалами и гарантируем долговечность результата.</p>
+				<p>Не откладывайте заботу о вашей крыше! Оставьте заявку, и мы рассчитаем стоимость работ. Доверьтесь профессионалам своего дела.</p>
+				<a href="#application" class="application">Оставить заявку</a>
 			</div>
 		</div>
 		<MainForm client:only="react"/>
 		<Second/>
 		<Advantages/>
 		<AdvantagesSlider/>
-		<!-- <Form client:load /> -->
 	</main>
 </Layout>
 
 <style>
-
 .first_block {
 	width: 100%;
-	height: 1000px;
+	min-height: 100vh;
 	position: relative;
 	background-image: url('/12.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: center;
 }
 
-.name {
-	text-shadow: 0 0 3px #1f222f, 0 0 5px #1f222f;
-	color: white;
-	font-size: 40px; 
-	text-align: center;
-}
-
-.application {
-	width: 150px;
-	height: 40px;
-	background-color: #4CAF50;
-	border-radius: 5px;
-	color: white;
-	position: absolute;
-	bottom: -10px;
-	left: 50%;
-	transform: translateX(-50%);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
+/* --- ДЕСКТОП --- */
 .info {
 	width: 500px;
-	height: 500px;
 	position: relative;
 	left: 300px;
 	top: 200px;
 }
 
+.name {
+	text-shadow: 0 0 3px #1f222f, 0 0 5px #1f222f;
+	color: white;
+	font-size: 40px;
+	text-align: left;
+}
+
 p {
 	color: white;
 	margin-top: 20px;
-	font-size: 18px; 
+	font-size: 18px;
 	text-shadow: 0 0 3px #1f222f, 0 0 5px #1f222f;
+	text-align: left;
 }
 
-.button_link {
+.application {
+	width: 200px;
+	height: 45px;
+	background-color: #4CAF50;
+	border-radius: 5px;
 	color: white;
-	width: 150px !important;
-	height: 40px !important;
+	position: relative;
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background 0.3s;
 }
 
-/* планшеты */
-@media screen and (max-width: 990px) {
+.application:hover {
+	background-color: #45a049;
+}
+
+/* --- ПЛАНШЕТЫ --- */
+@media screen and (max-width: 992px) {
 	.info {
-		left: 50%;
-		transform: translateX(-50%);
-		height: auto;
 		width: 90%;
-		top: 100px;
-	}
-	.name {
-		font-size: 32px; 
-	}
-	p {
-		font-size: 17px;
-	}
-}
-
-/* телефоны */
-@media screen and (max-width: 600px) {
-	.first_block {
-		height: auto;
-		padding: 60px 15px;
+		left: 50%;
+		top: 80px;
+		transform: translateX(-50%);
 		text-align: center;
 	}
 
+	.name,
+	p {
+		text-align: center;
+	}
+
+	.application {
+		margin: 30px auto 0 auto;
+	}
+}
+
+/* --- МОБИЛЬНЫЕ (маленькие экраны) --- */
+@media screen and (max-width: 576px) {
 	.info {
 		width: 100%;
-		left: 0;
-		top: 0;
-		transform: none;
+		left: 50%;
+		top: 100px;
+		transform: translateX(-50%);
+		text-align: center;
+		padding: 20px 15px;
+
 	}
 
 	.name {
-		font-size: 28px; 
+		font-size: 36px;   /* КРУПНЫЙ заголовок */
 		line-height: 1.3;
+		color: #fff;
+		text-shadow: 0 0 8px #000, 0 0 16px #000;
+		margin-bottom: 25px;
 	}
 
 	p {
-		font-size: 20px; 
+		font-size: 20px;   /* увеличил основной текст */
 		line-height: 1.6;
+		color: #fff;
+		text-shadow: 0 0 6px #000, 0 0 14px #000;
+		margin-bottom: 15px;
+	}
+
+	.application {
+		width: 200px;
+		height: 48px;
+		font-size: 17px;
+		margin: 30px auto 0 auto;
+	}
+}
+@media screen and (max-width: 576px) {
+	.info {
+		width: 100%;
+		left: 50%;
+		top: 120px;
+		transform: translateX(-50%);
+		text-align: center;
+		padding: 20px 15px;
+	}
+
+	.name {
+		font-size: 32px;  /* было 26px → увеличил */
+		line-height: 1.3;
+		color: #fff;
+		text-shadow: 0 0 6px #000, 0 0 14px #000;
+		margin-bottom: 20px;
+	}
+
+	p {
+		font-size: 18px;  /* было 15px → увеличил */
+		line-height: 1.6;
+		color: #fff;
+		text-shadow: 0 0 5px #000, 0 0 12px #000;
+		margin-bottom: 12px;
 	}
 
 	.application {
 		width: 180px;
-		height: 50px;
-		font-size: 18px;
-		position: static; 
-		margin: 30px auto 0;
+		height: 42px;
+		font-size: 16px;
+		margin: 25px auto 0 auto;
 	}
 }
-
-/* очень маленькие телефоны */
-@media screen and (max-width: 400px) {
-	.name {
-		font-size: 24px; 
-	}
-
-	p {
-		font-size: 19px;
-	}
-
-	.application {
-		width: 100%; 
-		height: 55px;
-		font-size: 19px;
-	}
-}
+</style>

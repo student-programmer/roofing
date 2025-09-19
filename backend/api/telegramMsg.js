@@ -8,8 +8,7 @@ module.exports.sendMsg = (req, res) => {
     let fields = [
 			'<b>Имя</b>: ' + reqBody.name,
 			// '<b>Email</b>: ' + reqBody.email,
-			'<b>Номер телефона</b>: ' + reqBody.phone,
-			'<b>Заявка по крышам</b>',
+			'<b>Номер телефона</b>: ' + reqBody.phone
 		];
     let msg = '';
     //проходимся по массиву и склеиваем все в одну строку

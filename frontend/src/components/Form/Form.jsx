@@ -40,7 +40,7 @@ export const MainForm = () => {
 			.then(() => {
 				toggleModal(modal);
 				setTimeout(() => toggleModal(!modal), 10000);
-				ym(96899203, 'reachGoal', 'submit');
+				ym(104219428,'reachGoal','submit')
 			});
 
 		reset();

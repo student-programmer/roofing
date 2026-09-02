@@ -1,105 +1,157 @@
 ---
-
-// interface Props {
-// 	title: string;
-// 	body: string;
-// 	href: string;
-// }
-
-
-
-// const { href, title, body } = Astro.props;
-
 ---
 
-<header>
-<div class="logo">КРОВЭКСПЕРТ</div>
-<ul class="links">
-    <li class="link_block"><a href="#first" class="link">Главная</a></li>
-    <li class="link_block"><a href="#application" class="link">Услуги</a></li>
-    <li class="link_block"><a href="#footer" class="link">Контакты</a></li>
-</ul>
-    <p class="phone">+7(978)-024-13-45</p>
-	<a href="#application" class="application">Оставить заявку</a>
-</header>
-<style>
-header{
-    width:100%;
-    height:100px;
-    position:fixed;
-    background-color: #1f222f;
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index:10;
-}
-.links{
-    width:400px;
-    display:flex;
-    justify-content: space-around;
-}
-.link{
-   color:white;
-   font-size:25px;
-}
-.logo{
-font-size:40px;
-color:white;
-}
-.application{
-	width:150px;
-	height:40px;
-	/* background-color: #f52137; */
-    background-color: 	#4CAF50;
-	border-radius: 5px;
-	color:white;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-.phone{
-     color:white;
-   font-size:25px;
-}
-.button_link{
-    color:white;
-    	width:150px !important;
-	height:40px !important;
-}
-@media screen and (max-width: 990px) {
-.phone{
-    font-size:17px;
-}
-.logo{
-    display:none;
-}
-.link{
-    font-size:17px;
-}
-  }
-  @media screen and (max-width: 710px) {
-header{
-    justify-content: center;
-}
-.application{
-    display:none;
-}
-.links{
-    width:250px;
-}
-  }
-</style>
-<script>
-  const anchors = document.querySelectorAll('a[href*="#"]');
+<header id="kx-header">
+  <div class="kx-header-inner">
+    <a href="#top" class="kx-logo">
+      <span class="kx-logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </span>
+      <span class="kx-logo-text">
+        <span class="kx-logo-name">КРОВЭКСПЕРТ</span>
+        <span class="kx-logo-sub">Кровля под ключ · Крым</span>
+      </span>
+    </a>
 
-		for (let anchor of anchors) {
-			anchor.addEventListener('click', function (event) {
-				event.preventDefault();
-				const blockID = anchor.getAttribute('href');
-				document.querySelector('' + blockID).scrollIntoView({
-					behavior: 'smooth',
-					block: 'start',
-				});
-			});
-		}
+    <nav class="kx-navlinks" aria-label="Основные разделы">
+      <a href="#services" class="kx-navlink">Услуги</a>
+      <a href="#works"    class="kx-navlink">Работы</a>
+      <a href="#steps"    class="kx-navlink">Как работаем</a>
+      <a href="#geo"      class="kx-navlink">География</a>
+    </nav>
+
+    <div class="kx-header-right">
+      <a href="tel:+79780241345" class="kx-phone-block">
+        <span class="kx-phone-num">+7 (978) 024-13-45</span>
+        <span class="kx-phone-sub">Ответим с 8:00 до 21:00</span>
+      </a>
+      <a href="#form" class="btn-primary sm">Оставить заявку</a>
+    </div>
+  </div>
+</header>
+
+<style>
+#kx-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--glass-light);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.kx-header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.kx-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.kx-logo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--grad-sun);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy-900);
+}
+.kx-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.kx-logo-name {
+  font: 900 18px/1 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--navy-900);
+}
+.kx-logo-sub {
+  font: 700 10px/1.4 var(--font-body);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+.kx-navlinks {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+}
+.kx-navlink {
+  font: 500 14px/1 var(--font-body);
+  color: var(--text-body);
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: var(--t-hover);
+  text-decoration: none;
+}
+.kx-navlink:hover {
+  color: var(--solar-700);
+  border-bottom-color: var(--solar-500);
+}
+.kx-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+.kx-navlinks ~ .kx-header-right {
+  margin-left: 0;
+}
+.kx-phone-block {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  text-decoration: none;
+}
+.kx-phone-num {
+  font: 600 17px/1.2 var(--font-mono);
+  color: var(--navy-900);
+  white-space: nowrap;
+}
+.kx-phone-sub {
+  font: 400 11px/1.4 var(--font-body);
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .kx-phone-block { display: none; }
+  .kx-header-inner { padding: 0 20px; }
+}
+@media (max-width: 540px) {
+  .kx-logo-sub { display: none; }
+  .kx-header-right .btn-primary { display: none; }
+}
+</style>
+
+<script>
+  const header = document.getElementById('kx-header');
+  const anchors = document.querySelectorAll('a[href^="#"]');
+  anchors.forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href && href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  });
 </script>

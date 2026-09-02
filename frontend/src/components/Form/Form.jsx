@@ -1,12 +1,13 @@
 import { useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
-import c from './Form.module.css';
 import { useState, useRef } from 'react';
 import Modal from '../Modal/Modal';
 
 export const MainForm = () => {
-	const [error, setError] = useState(false);
+	const [sending, setSending] = useState(false);
+	const [sendError, setSendError] = useState('');
 	const [modal, setModal] = useState(false);
+
 	const {
 		register,
 		reset,
@@ -17,103 +18,93 @@ export const MainForm = () => {
 
 	const ref = useRef();
 
-	const toggleModal = currentStatus => {
-		setModal(!currentStatus);
-	};
+	const toggleModal = () => setModal(v => !v);
+
 	if (modal) {
-		document.body.classList.add('activeModal');
+		document.body.style.overflow = 'hidden';
 	} else {
-		document.body.classList.remove('activeModal');
+		document.body.style.overflow = '';
 	}
 
-	const Submit = data => {
-		const phone = data.phone;
-		const name = data.name;
-		fetch('/api/telegram', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ name, phone }),
-		})
-			.then(response => response.json())
-			.then(() => {
-				toggleModal(modal);
-				setTimeout(() => toggleModal(!modal), 10000);
-				ym(104219428,'reachGoal','submit')
+	const Submit = async data => {
+		setSending(true);
+		setSendError('');
+		try {
+			const res = await fetch('/api/telegram', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name: data.name, phone: data.phone }),
 			});
-
-		reset();
-		setValue('phone', '');
+			await res.json();
+			setModal(true);
+			setTimeout(() => setModal(false), 10000);
+			if (typeof ym !== 'undefined') ym(104219428, 'reachGoal', 'submit');
+			reset();
+			setValue('phone', '');
+		} catch {
+			setSendError('Не удалось отправить заявку. Позвоните нам напрямую.');
+		} finally {
+			setSending(false);
+		}
 	};
 
 	return (
-		<div className={c.cont} id='application'>
-			<form onSubmit={handleSubmit(Submit)} className={c.form}>
-				<h1 className={c.zag}> Закажите звонок</h1>
-				<p className={c.parag}>
-					Оставьте контакты, по которым мы можем с вами связаться, наши
-					специалисты помогут вам с решением вашего вопроса.
-				</p>
-				<div className={c.inputs}>
-					<div className={c.label}>
-						<input
-							type='text'
-							className={c.name}
-							name='name'
-							id='name'
-							placeholder='   Ваше имя'
-							autoComplete='name'
-							{...register('name', {
-								required: 'Поле обязательно к заполнению',
-								pattern: {
-									value: /^[A-Za-zА-Яа-яЁё\s]+$/,
-									message: 'Поле должно содержать только буквы',
-								},
-							})}
-						/>
-					</div>
-					{errors?.name && (
-						<p className={c.name_errors}>{errors?.name?.message || 'Error'}</p>
-					)}
-					<div className={c.label}>
-						<InputMask
-							ref={ref}
-							mask='+7 999 999 99 99'
-							className={c.name}
-							type='tel'
-							name='phone'
-							id='phone'
-							placeholder='   Номер телефона'
-							autoComplete='phone'
-							alwaysShowMask={false}
-							{...register('phone', {
-								required: 'Поле обязательно к заполнению',
-								valueAsNumber: false,
-								minLength: {
-									value: 10,
-									message: 'Должно быть не менее 10 цифр',
-								},
-							})}
-						/>
-					</div>
-					{errors?.phone && (
-						<p className={c.phone_errors}>
-							{errors?.phone?.message || 'Error'}
-						</p>
-					)}
+		<div className="kx-form-card">
+			<div className="kx-form-top-bar"></div>
+			<form onSubmit={handleSubmit(Submit)} className="kx-form-body" noValidate>
+
+				<div className="kx-field">
+					<label htmlFor="kx-name" className="kx-label">Как вас зовут</label>
+					<input
+						id="kx-name"
+						type="text"
+						autoComplete="name"
+						placeholder="Например, Сергей"
+						className={`kx-input ${errors.name ? 'kx-input--error' : ''}`}
+						{...register('name', {
+							required: 'Введите ваше имя',
+							pattern: {
+								value: /^[A-Za-zА-Яа-яЁёҮүҢңҒғ\s]+$/,
+								message: 'Только буквы',
+							},
+						})}
+					/>
+					{errors.name && <span className="kx-error">{errors.name.message}</span>}
 				</div>
-				<button className={c.btn}>Оставить заявку</button>
-				<p className={c.agreement}>
+
+				<div className="kx-field">
+					<label htmlFor="kx-phone" className="kx-label">Номер телефона</label>
+					<InputMask
+						ref={ref}
+						mask="+7 999 999 99 99"
+						id="kx-phone"
+						type="tel"
+						autoComplete="tel"
+						placeholder="+7 978 000 00 00"
+						className={`kx-input kx-input--mono ${errors.phone ? 'kx-input--error' : ''}`}
+						{...register('phone', {
+							required: 'Введите номер телефона',
+							minLength: { value: 16, message: 'Введите полный номер' },
+						})}
+					/>
+					{errors.phone && <span className="kx-error">{errors.phone.message}</span>}
+				</div>
+
+				<button type="submit" className="kx-submit" disabled={sending}>
+					{sending ? 'Отправляем…' : 'Оставить заявку'}
+				</button>
+
+				{sendError && (
+					<div className="kx-send-error">{sendError}</div>
+				)}
+
+				<p className="kx-agreement">
 					Нажимая на кнопку, вы даёте согласие на обработку персональных данных
-					и&nbsp;
-					<a href='/docs/privacy.pdf' target='_blank' rel='noopener noreferrer'>
-						принимаете политику конфиденциальности
-					</a>
-					.
+					и&nbsp;<a href="/docs/privacy.pdf" target="_blank" rel="noopener">политику конфиденциальности</a>.
 				</p>
-				{modal && <Modal toggleModal={toggleModal} />}
 			</form>
+
+			{modal && <Modal toggleModal={toggleModal} />}
 		</div>
 	);
 };

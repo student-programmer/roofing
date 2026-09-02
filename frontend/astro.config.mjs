@@ -1,8 +1,17 @@
-import { defineConfig } from 'astro/config';
-
+import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [react()]
+  integrations: [react()],
+  server: { host: "127.0.0.1" },
+  vite: {
+    server: {
+      proxy: {
+        "/api": {
+          target: "http://localhost:5000",
+          rewrite: (path) => path.replace(/^\/api/, ""),
+        },
+      },
+    },
+  },
 });

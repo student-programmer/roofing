@@ -1,81 +1,133 @@
 ---
-
 ---
 
 <footer id="footer">
-        <div class="contact-info">
-            <p><strong>Телефон:</strong> +7(978)-024-13-45</p>
-            <p><strong>Email:</strong> <a href="mailto:roffingstroy@gmail.com">roffingstroy@gmail.com</a></p>
-            <p>ФИО: Подобный Андрей Юрьевич</p>
-            <p>ИНН: 920350483400</p>
-            <p>Адрес: г.Симферополь, ул.Гражданская 109</p>
-            <p><a href='/docs/privacy.pdf' target='_blank' rel='noopener noreferrer' class="privacy-link">Политика конфиденциальности</a></p>
+  <div class="kx-footer-inner">
+    <div class="kx-footer-cols">
+      <!-- Бренд -->
+      <div>
+        <div class="kx-footer-logo">
+          <span class="kx-footer-logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </span>
+          <span class="kx-footer-brand">КРОВЭКСПЕРТ</span>
         </div>
+        <p class="kx-footer-desc">Кровельные работы в Симферополе и по всему Крыму. Своя бригада, договор, гарантия 10 лет.</p>
+      </div>
+
+      <!-- Разделы -->
+      <div class="kx-footer-col">
+        <div class="kx-footer-col-title">Разделы</div>
+        <a href="#services">Услуги</a>
+        <a href="#works">Видео работ</a>
+        <a href="#steps">Как работаем</a>
+        <a href="#geo">География</a>
+      </div>
+
+      <!-- Связаться -->
+      <div class="kx-footer-col">
+        <div class="kx-footer-col-title">Связаться</div>
+        <a href="tel:+79780241345" class="kx-footer-phone">+7 (978) 024-13-45</a>
+        <span class="kx-footer-info">Ежедневно 8:00 — 21:00</span>
+        <span class="kx-footer-info">Симферополь, выезд по Крыму</span>
+      </div>
+    </div>
+
+    <div class="kx-footer-bottom">
+      <span>© 2026 КРОВЭКСПЕРТ</span>
+      <span>Не является публичной офертой. Точная цена — после замера.</span>
+    </div>
+  </div>
 </footer>
 
-    <style>
-        footer {
-            width: 100%;
-            height: 280px;
-            background-color: #1f222f;
-            
-            color: white;
-            text-align: center; 
-            padding-top: 1px;
-        }
-        .contact-info {
-            width:400px;
-            height:100px;
-            position: relative;
-            left:50%;
-            top:40%;
-            transform: translate(-50%, -50%);
-        }
-
-        .contact-info p {
-            margin: 10px 0;
-            font-size: 16px;
-			text-align: center; 
-            font-size: 20px;
-        }
-
-        .contact-info strong {
-            font-weight: bold;
-            color: white;
-			
-        }
-
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-			font-size: 20px;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-			
-        }
-        .privacy-link {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 18px;
+<style>
+footer {
+  background: var(--grad-night);
+  padding: 64px 32px 40px;
+}
+.kx-footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.kx-footer-cols {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.kx-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.kx-footer-logo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--grad-sun);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy-900);
+  flex-shrink: 0;
+}
+.kx-footer-brand {
+  font: 900 18px/1 var(--font-display);
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.kx-footer-desc {
+  font: 400 15px/1.6 var(--font-body);
+  color: rgba(255,255,255,.62);
+  max-width: 36ch;
+}
+.kx-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.kx-footer-col-title {
+  font: 700 11px/1.2 var(--font-body);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--solar-300);
+  margin-bottom: 4px;
+}
+.kx-footer-col a {
+  font: 400 15px/1.4 var(--font-body);
+  color: rgba(255,255,255,.72);
+  text-decoration: none;
+  transition: var(--t-hover);
+}
+.kx-footer-col a:hover { color: #fff; }
+.kx-footer-phone {
+  font: 600 20px/1.2 var(--font-mono) !important;
+  color: #fff !important;
+}
+.kx-footer-info {
+  font: 400 14px/1.4 var(--font-body);
+  color: rgba(255,255,255,.62);
+}
+.kx-footer-bottom {
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  font: 400 13px/1.4 var(--font-body);
+  color: rgba(255,255,255,.45);
 }
 
-
-@media screen and (max-width: 710px) {
-.contact-info {
-            width:100%;
-            height:220px;
-        bottom:0px;
-        }
-
-            footer {
-            width: 100%;
-            height: 300px;
-         
-        }
-
+@media (max-width: 900px) {
+  .kx-footer-cols {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  footer { padding: 48px 20px 32px; }
 }
-		
-    </style>
-
+</style>

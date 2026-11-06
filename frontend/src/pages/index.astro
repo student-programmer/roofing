@@ -1,6 +1,7 @@
 ---
 import { MainForm } from '../components/Form/Form';
 import Layout from '../layouts/Layout.astro';
+import { SHOW_LEAD_FORM } from '../config';
 
 const services = [
   { icon: 'layers',       title: 'Монтаж мягкой кровли',           desc: 'Гибкая черепица по сплошному основанию — тихо, аккуратно, без гулкого дождя над спальней.' },
@@ -23,7 +24,7 @@ const works = [
 ];
 
 const steps = [
-  { icon: 'phone',    n: '01', title: 'Звонок или заявка',    desc: 'Спросим адрес, площадь и что беспокоит. Пять минут разговора.', active: true },
+  { icon: 'phone',    n: '01', title: SHOW_LEAD_FORM ? 'Звонок или заявка' : 'Звонок или сообщение',    desc: 'Спросим адрес, площадь и что беспокоит. Пять минут разговора.', active: true },
   { icon: 'ruler',    n: '02', title: 'Замер на объекте',     desc: 'Поднимаемся на крышу, смотрим стропила и узлы. Бесплатно.', active: false },
   { icon: 'wallet',   n: '03', title: 'Смета и договор',      desc: 'Материалы, работы, сроки — построчно. Цена в договоре не меняется.', active: false },
   { icon: 'hardhat',  n: '04', title: 'Монтаж',               desc: 'Своя бригада. Присылаем фото каждый день, даже если вы не в Крыму.', active: false },
@@ -58,7 +59,11 @@ const reviews = [
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81a19.79 19.79 0 0 1-3.07-8.67 2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 6a16 16 0 0 0 6.91 6.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Позвонить: +7 (978) 024-13-45
         </a>
-        <a href="#form" class="btn-inverse lg">Оставить заявку</a>
+        {SHOW_LEAD_FORM ? (
+          <a href="#form" class="btn-inverse lg">Оставить заявку</a>
+        ) : (
+          <a href="https://wa.me/79780241345" target="_blank" rel="noopener" class="btn-inverse lg">Написать в WhatsApp</a>
+        )}
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><span class="stat-num">6+</span><span class="stat-lbl">лет на кровлях Крыма</span></div>
@@ -262,6 +267,7 @@ const reviews = [
 </section>
 
 <!-- ─── ФОРМА ──────────────────────────────────────────────── -->
+{SHOW_LEAD_FORM && (
 <section id="form" class="kx-sec" style="background:var(--surface-page)">
   <div class="container">
     <div class="kx-2 form-grid">
@@ -296,6 +302,7 @@ const reviews = [
     </div>
   </div>
 </section>
+)}
 
 <!-- ─── ПЛАВАЮЩАЯ КНОПКА ──────────────────────────────────── -->
 <a href="tel:+79780241345" class="floating-call" aria-label="Позвонить">

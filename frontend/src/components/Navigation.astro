@@ -1,4 +1,5 @@
 ---
+import { SHOW_LEAD_FORM } from '../config';
 ---
 
 <header id="kx-header">
@@ -28,7 +29,7 @@
         <span class="kx-phone-num">+7 (978) 024-13-45</span>
         <span class="kx-phone-sub">Ответим с 8:00 до 21:00</span>
       </a>
-      <a href="#form" class="btn-primary sm">Оставить заявку</a>
+      {SHOW_LEAD_FORM && <a href="#form" class="btn-primary sm">Оставить заявку</a>}
     </div>
   </div>
 </header>
